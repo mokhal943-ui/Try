@@ -86,7 +86,6 @@ class SkillProfile:
 
         if skill in self.skills:
             self.skills.discard(skill)
-            print("Skill removed.")
             return True
         return False
 
@@ -154,6 +153,8 @@ def main():
             if delete == "all":
                 profile.erase()
                 print("All skills removed.")
+            elif delete not in profile.skills:
+                print(f'{delete.title()} does not exist.')
             else:
                 profile.remove(delete)
                 print("Skill removed.")
@@ -166,7 +167,7 @@ def main():
             total = sum(score for _, score in ranked) or 1
             print("\n=== ML Role Prediction ===")
             for role, score in ranked:
-                print(f"{role}: {score/total * 100:.3f}%")
+                print(f"{role}: {score/total * 100:.1f}%")
             print("\nNearest training examples:")
             for similarity, role in predictions:
                 print(f"{role}: similarity= {similarity * 100:.1f}%")
