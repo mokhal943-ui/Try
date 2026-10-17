@@ -155,7 +155,7 @@ def main():
                 profile.erase()
                 print("All skills removed.")
             else:
-                profile.skills.remove(delete)
+                profile.remove(delete)
                 print("Skill removed.")
             
         elif choice == "4":
@@ -169,8 +169,7 @@ def main():
                 print(f"{role}: {score/total * 100:.3f}%")
             print("\nNearest training examples:")
             for similarity, role in predictions:
-                print(f"{role}: similarity= {similarity/total * 100:.3f}%")
-            print("\nPrediction uses K-nearest neighbors and cosine similarity.")
+                print(f"{role}: similarity= {similarity * 100:.1f}%")
 
         elif choice == "5":
             roles = list(ROLE_SKILLS)
